@@ -6,68 +6,57 @@ using System.Text;
 
 namespace SpecialPrimes
 {
-    public class SieveOfAtkin : IEnumerable<ulong>
+    public class SieveOfAtkin : IPrimeFinder
     {
         private const bool HUH = true;
-        private readonly List<ulong> primes;
-        private readonly ulong upperlimit;
-        private readonly ulong lowerlimit;
+        private  ulong upperlimit;
+        private  ulong lowerlimit;
+        private BitArray isPrime;
 
-        public SieveOfAtkin(ulong lowerlimit, ulong upperlimit)
+        public void Init(int lowerbound, int upperbound)
         {
-            this.upperlimit = upperlimit;
-            this.lowerlimit = lowerlimit;
-            primes = new List<ulong>();
+            this.upperlimit = (ulong)Math.Max(upperbound, 1);
+            this.lowerlimit = (ulong)Math.Min(lowerbound, int.MaxValue);
+            FindPrimes();
         }
 
-        public IEnumerator<ulong> GetEnumerator()
+        public bool IsPrime(int n)
         {
-            if (!primes.Any())
-                FindPrimes();
-
-            foreach (var p in primes)
-                yield return p;
+            return isPrime[n - 1];
         }
 
         private void FindPrimes()
         {
-            var isPrime = new BitArray((int)upperlimit + 1);
+            isPrime = new BitArray((int)upperlimit);
+            isPrime[2] = true;
+            isPrime[3] = true;
             var sqrt = Math.Sqrt(upperlimit);
 
             for (ulong x = 1; x <= sqrt; x++)
                 for (ulong y = 1; y <= sqrt; y++)
                 {
                     var n = 4 * x * x + y * y;
-                    if (n>= lowerlimit && n <= upperlimit && (n % 12 == 1 || n % 12 == 5))
-                        isPrime[(int)n] ^= true;
+                    if (n >= lowerlimit && n <= upperlimit && (n % 12 == 1 || n % 12 == 5))
+                        isPrime[(int)n - 1] ^= true;
 
                     n = 3 * x * x + y * y;
                     if (n >= lowerlimit && n <= upperlimit && n % 12 == 7)
-                        isPrime[(int)n] ^= true;
+                        isPrime[(int)n - 1] ^= true;
 
                     n = 3 * x * x - y * y;
                     if (n >= lowerlimit && x > y && n <= upperlimit && n % 12 == 11)
-                        isPrime[(int)n] ^= true;
+                        isPrime[(int)n - 1] ^= true;
                 }
 
             for (ulong n = 5; n <= sqrt; n++)
-                if (isPrime[(int)n])
+                if (isPrime[(int)n - 1])
                 {
                     var s = n * n;
                     for (ulong k = s; k <= upperlimit; k += s)
-                        isPrime[(int)k] = false;
+                        isPrime[(int)k - 1] = false;
                 }
-
-            primes.Add(2);
-            primes.Add(3);
-            for (ulong n = 5; n <= upperlimit; n += 2)
-                if (isPrime[(int)n])
-                    primes.Add(n);
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
