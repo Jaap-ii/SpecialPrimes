@@ -56,7 +56,5 @@ namespace SpecialPrimes
                         isPrime[(int)k - 1] = false;
                 }
         }
-
-
     }
 }

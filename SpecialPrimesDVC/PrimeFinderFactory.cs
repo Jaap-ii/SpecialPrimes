@@ -12,15 +12,15 @@ namespace SpecialPrimes
             double deel = (range / (double)lower);
             if ((lower < 10000000 && deel < 0.5) || (lower > 10000000 && lower < 100000000 && deel < 0.3))
             {
-                Console.WriteLine("Using Simple");
+                //Console.WriteLine("Using Simple");
                 return new SimplePrimeTool();
             }
             if ((lower <= 1000000000 && lower >= 100000000 && range < 50000000) || (lower >= 1000000000 && range < 30000000))
             {
-                Console.WriteLine("Using Simple + probe");
+                //Console.WriteLine("Using Simple + probe");
                 return new SimplePrimeTool(FermatLittleTheorem.CouldBePrime);
             }
-            Console.WriteLine("Using Atkin");
+            //Console.WriteLine("Using Atkin");
             return new SieveOfAtkin();
         }
     }

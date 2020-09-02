@@ -34,10 +34,10 @@ namespace SpecialPrimes
             int index = (n - 1) - lowerbound;
             if (primesCalculated[index])
                 return primes[index];
-            bool result; 
-                if (probe==null)
+            bool result;
+            if (probe == null)
                 result = CalculateIsPrime(n);
-                else
+            else
                 result = probe(n) && CalculateIsPrime(n);
             primesCalculated[index] = true;
             primes[index] = result;
