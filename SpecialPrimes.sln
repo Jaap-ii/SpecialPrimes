@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecialPrimesDVC", "SpecialPrimesDVC\SpecialPrimesDVC.csproj", "{C10D120E-5D50-41EE-9B88-6AB7C8FF3C63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperfastSpecialPrimes", "SuperfastSpecialPrimes\SuperfastSpecialPrimes.csproj", "{7AEC6EA4-8559-4704-B72E-6D30C12BD1E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C10D120E-5D50-41EE-9B88-6AB7C8FF3C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C10D120E-5D50-41EE-9B88-6AB7C8FF3C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C10D120E-5D50-41EE-9B88-6AB7C8FF3C63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEC6EA4-8559-4704-B72E-6D30C12BD1E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEC6EA4-8559-4704-B72E-6D30C12BD1E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEC6EA4-8559-4704-B72E-6D30C12BD1E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEC6EA4-8559-4704-B72E-6D30C12BD1E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
