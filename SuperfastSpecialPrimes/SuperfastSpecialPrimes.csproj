@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SpecialPrimeOddBitArrayBig.dat.gz" />
     <None Remove="SpecialPrimeOddBitArraySmall.dat" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SpecialPrimeOddBitArrayBig.dat.gz" />
     <EmbeddedResource Include="SpecialPrimeOddBitArraySmall.dat" />
   </ItemGroup>
 

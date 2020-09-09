@@ -17,9 +17,9 @@ namespace SpecialPrimes
 {
     class Program
     {
-        static void Main2(string[] args)
+        static void Maing(string[] args)
         {
-            return;
+            //return;
             int upper = int.MaxValue;
             int lower = 1;
             var sw = new Stopwatch();
@@ -36,9 +36,9 @@ namespace SpecialPrimes
 
             //Console.WriteLine($"found {boe} took {sw.ElapsedMilliseconds} ms");
             //sw.Reset();
-            //var formatter = new BinaryFormatter();
-            //var fs = new FileStream(@"c:\temp\SpecialPrimeOddBitArray.dat", FileMode.Create);
-            //formatter.Serialize(fs, oba);
+            //        var formatter = new BinaryFormatter();
+            //          var fs = new FileStream(@"c:\temp\SpecialPrimeOddBitArray.dat", FileMode.Create);
+            //            formatter.Serialize(fs, oba);
             // Assembly.GetExecutingAssembly()
             // GetManifestoResourceStream()
             OddBitArray boe;
@@ -47,12 +47,12 @@ namespace SpecialPrimes
             {
                 boe = formatter.Deserialize(stream) as OddBitArray;
             };
-            var oba1 = new SuperfastSpecialPrimes.OddBitArray(1,1000001);
-            for (int i=1;i<=1000001;i=i+2)
+            var oba1 = new SuperfastSpecialPrimes.OddBitArray(1, int.MaxValue);
+            for (int i = 1; i <= int.MaxValue && i > 0; i = i + 2)
             {
                 oba1[i] = boe[i];
             }
-            using (var fs = new FileStream(@"c:\temp\SpecialPrimeOddBitArraySmall.dat", FileMode.Create))
+            using (var fs = new FileStream(@"c:\temp\SpecialPrimeOddBitArrayBig.dat", FileMode.Create))
             {
                 formatter.Serialize(fs, oba1);
             }
@@ -99,7 +99,8 @@ namespace SpecialPrimes
                 try
                 {
                     sw.Start();
-                    var answer = SuperfastSpecialPrimes.Primer.Solve(test.from, test.to);
+                    var answer = JaapHisSolver.Solve(test.from, test.to);
+                    //var answer = SuperfastSpecialPrimes.Primer.Solve(test.from, test.to);
                     sw.Stop();
                     Console.WriteLine($"Result for {test.from} - {test.to} is correct: {test.VerifyResults(answer)}. Answer given in {sw.ElapsedTicks} ticks");
                     sw.Reset();
@@ -127,6 +128,10 @@ namespace SpecialPrimes
             output.Add(new Test { from = 13, to = 13, results = new List<int> { 13 } });
             output.Add(new Test { from = 13, to = 19, results = new List<int> { 13, 19 } });
             output.Add(new Test { from = 1, to = 1000, results = new List<int> { 13, 19, 31, 37, 43, 53, 61, 79, 101, 113, 139, 163, 173, 199, 211, 223, 241, 269, 277, 331, 353, 373, 397, 457, 463, 509, 521, 541, 577, 601, 619, 631, 727, 773, 787, 811, 829, 853, 883, 907, 919, 947, 967, 991 } });
+            output.Add(new Test { from = 1, to = 1000000, results = SuperfastSpecialPrimes.Primer.Solve(1, 1000000) });
+            output.Add(new Test { from = 1, to = 1000000000, results = SuperfastSpecialPrimes.Primer.Solve(1, 1000000000) });
+            //output.Add(new Test { from = 1000000000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(1000000000, int.MaxValue) });
+            //output.Add(new Test { from = int.MaxValue - 10000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(int.MaxValue - 10000, int.MaxValue) });
             return output;
         }
     }
