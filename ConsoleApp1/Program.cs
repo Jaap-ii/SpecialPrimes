@@ -17,9 +17,8 @@ namespace SpecialPrimes
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
-            Primer.boe();
             return;
             int upper = int.MaxValue;
             int lower = 1;
@@ -88,7 +87,7 @@ namespace SpecialPrimes
             }
             var boe2 = formatter.Deserialize(outputStream) as OddBitArray;
         }
-        static void Main2(string[] args)
+        static void Main(string[] args)
         { //SpecialPrime.FindSpecialPrimes(1,10).ForEach(i => Console.Write("{0} ,", i));
             var testSet = BuildTests();
             var sw = new Stopwatch();
@@ -100,7 +99,7 @@ namespace SpecialPrimes
                 try
                 {
                     sw.Start();
-                    var answer = JaapHisSolver.Solve(test.from, test.to);
+                    var answer = SuperfastSpecialPrimes.Primer.Solve(test.from, test.to);
                     sw.Stop();
                     Console.WriteLine($"Result for {test.from} - {test.to} is correct: {test.VerifyResults(answer)}. Answer given in {sw.ElapsedTicks} ticks");
                     sw.Reset();
