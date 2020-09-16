@@ -24,19 +24,21 @@ namespace SpecialPrimes
                 lower = lower - 1;
             int halfWayOffset = 0;
 
-            for (int i = lower; i <= upper && i > 0; i = i + 2)
+            for (int i = lower; halfWayOffset == 0 && i <= upper && i > 0; i = i + 2)
             {
                 if (primeFinder.IsPrime(i))
                 {
                     halfWayOffset = (i - lower);
                 }
             }
-            lower = lower - halfWayOffset - 1;
+            lower = lower - halfWayOffset;
+            if (lower % 2 == 0)
+                lower = lower - 1;
             if (lower < 5)
                 lower = 5;
 
-           int candidate = 0;
-           for (int i = lower; i <= upper && i > 0; i = i + 2)
+            int candidate = 0;
+            for (int i = lower; i <= upper && i > 0; i = i + 2)
             {
                 if (primeFinder.IsPrime(i))
                 {

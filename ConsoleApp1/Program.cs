@@ -99,10 +99,16 @@ namespace SpecialPrimes
                 try
                 {
                     sw.Start();
-                    var answer = JaapHisSolver.Solve(test.from, test.to);
-                    //var answer = SuperfastSpecialPrimes.Primer.Solve(test.from, test.to);
+                    //var answer = JaapHisSolver.Solve(test.from, test.to);
+                    var answer = SuperfastSpecialPrimes.Primer.Solve(test.from, test.to);
                     sw.Stop();
-                    Console.WriteLine($"Result for {test.from} - {test.to} is correct: {test.VerifyResults(answer)}. Answer given in {sw.ElapsedTicks} ticks");
+                    string not = "not ";
+                    if (test.VerifyResults(answer))
+                        not = "";
+                    string timeThingy = $"{sw.ElapsedTicks} ticks";
+                    if (sw.ElapsedMilliseconds > 1000)
+                        timeThingy = $"{sw.ElapsedMilliseconds} ms";
+                        Console.WriteLine($"Result for {test.from} - {test.to} is {not}correct. Answer given in {timeThingy}.");
                     sw.Reset();
                 }
                 catch (Exception e)
@@ -130,8 +136,10 @@ namespace SpecialPrimes
             output.Add(new Test { from = 1, to = 1000, results = new List<int> { 13, 19, 31, 37, 43, 53, 61, 79, 101, 113, 139, 163, 173, 199, 211, 223, 241, 269, 277, 331, 353, 373, 397, 457, 463, 509, 521, 541, 577, 601, 619, 631, 727, 773, 787, 811, 829, 853, 883, 907, 919, 947, 967, 991 } });
             output.Add(new Test { from = 1, to = 1000000, results = SuperfastSpecialPrimes.Primer.Solve(1, 1000000) });
             output.Add(new Test { from = 1, to = 1000000000, results = SuperfastSpecialPrimes.Primer.Solve(1, 1000000000) });
-            //output.Add(new Test { from = 1000000000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(1000000000, int.MaxValue) });
-            //output.Add(new Test { from = int.MaxValue - 10000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(int.MaxValue - 10000, int.MaxValue) });
+            output.Add(new Test { from = 1000000000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(1000000000, int.MaxValue) });
+            output.Add(new Test { from = int.MaxValue - 100000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(int.MaxValue - 100000, int.MaxValue) });
+            output.Add(new Test { from = int.MaxValue - 30000000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(int.MaxValue - 30000000, int.MaxValue) });
+            output.Add(new Test { from = 1, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(1, int.MaxValue) });
             return output;
         }
     }

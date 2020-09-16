@@ -51,39 +51,20 @@ namespace SuperfastSpecialPrimes
             }
         }
 
-//        var outputStream = new MemoryStream();
-//            using (var inputStream = File.Open(@"c:\temp\SpecialPrimeOddBitArray3.dat", FileMode.Open, FileAccess.Read, FileShare.Read))
-//            using (var gzip = new GZipStream(inputStream, CompressionMode.Decompress))
-//            {
-//                gzip.CopyTo(outputStream);
-
-//                gzip.Close();
-//                inputStream.Close();
-
-//                // After writing to the MemoryStream, the position will be the size
-//                // of the decompressed file, we should reset it back to zero before returning.
-//                outputStream.Position = 0;
-//            }
-//var boe2 = formatter.Deserialize(outputStream) as OddBitArray;
-
-
-
-private static List<int> _result = new List<int>();
         private static OddBitArray _obaBig;
 
         public static List<int> Solve(int lower, int upper)
         {
-            //List<int> _result;
-            _result.Clear();
+            List<int> result = new List<int>();
             if (lower % 2 == 0)
                 lower = lower + 1;
             var oba = obaBig;
             for (int i = lower; i <= upper && i > 0; i = i + 2)
             {
                 if (oba[i])
-                    _result.Add(i);
+                    result.Add(i);
             }
-            return _result;
+            return result;
         }
     }
 }

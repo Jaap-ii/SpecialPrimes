@@ -15,7 +15,7 @@ namespace SpecialPrimes
                 //Console.WriteLine("Using Simple");
                 return new SimplePrimeTool();
             }
-            if ((lower <= 1000000000 && lower >= 100000000 && range < 50000000) || (lower >= 1000000000 && range < 30000000))
+            if ((lower <= 1000000000 && lower >= 100000000 && range < 50000001) || (lower >= 1000000000 && range < 30000001))
             {
                 //Console.WriteLine("Using Simple + probe");
                 return new SimplePrimeTool(FermatLittleTheorem.CouldBePrime);
