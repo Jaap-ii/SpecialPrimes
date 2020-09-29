@@ -32,10 +32,16 @@ namespace HyperfastSpecialPrimes
             var arr = specialPrimes;
             var index = Array.BinarySearch(arr, lower);
             index = Math.Abs(index);
-            int val = 0;
-            for (int i = index; val <= upper && i > 0 && i <= arr.Length; i++)
+            if (index == 0)
+                index=1;
+            int val = arr[index - 1];
+            if (val < lower)
+                index = index + 1;
+            for (int i = index; i <= arr.Length; i++)
             {
                 val = arr[i - 1];
+                if (val > upper)
+                    break;
                 result.Add(val);
             }
             return result;

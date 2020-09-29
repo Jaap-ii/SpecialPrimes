@@ -106,7 +106,7 @@ namespace SpecialPrimes
         }
         static void Main(string[] args)
         { //SpecialPrime.FindSpecialPrimes(1,10).ForEach(i => Console.Write("{0} ,", i));
-            HyperfastSpecialPrimes.Primer.Solve(1, 20);
+            //HyperfastSpecialPrimes.Primer.Solve(1, 20);
             var testSet = BuildTests();
             var sw = new Stopwatch();
             Console.WriteLine("Press any key to start tests.");
