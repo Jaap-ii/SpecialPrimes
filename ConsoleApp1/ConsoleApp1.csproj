@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HyperfastSpecialPrimes\HyperfastSpecialPrimes.csproj" />
     <ProjectReference Include="..\SpecialPrimesDVC\SpecialPrimesDVC.csproj" />
     <ProjectReference Include="..\SuperfastSpecialPrimes\SuperfastSpecialPrimes.csproj" />
   </ItemGroup>

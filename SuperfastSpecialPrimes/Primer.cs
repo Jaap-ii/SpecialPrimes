@@ -51,6 +51,20 @@ namespace SuperfastSpecialPrimes
             }
         }
 
+        private static int[] spArray
+        {
+            get
+            {
+                if (_spArray == null)
+                {
+                    _spArray = Solve(0, int.MaxValue - 1).ToArray();
+                }
+                return _spArray;
+            }
+        }
+
+        private static int[] _spArray;
+
         private static OddBitArray _obaBig;
 
         public static List<int> Solve(int lower, int upper)
@@ -66,5 +80,7 @@ namespace SuperfastSpecialPrimes
             }
             return result;
         }
+
+
     }
 }
