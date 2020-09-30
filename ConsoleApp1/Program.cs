@@ -155,10 +155,14 @@ namespace SpecialPrimes
             output.Add(new Test { from = 1, to = 1000000, results = SuperfastSpecialPrimes.Primer.Solve(1, 1000000) });
             output.Add(new Test { from = 1, to = 1000000000, results = SuperfastSpecialPrimes.Primer.Solve(1, 1000000000) });
             output.Add(new Test { from = 1000000000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(1000000000, int.MaxValue) });
-            output.Add(new Test { from = 1000000000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(1000000000, int.MaxValue) });
             output.Add(new Test { from = int.MaxValue - 100000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(int.MaxValue - 100000, int.MaxValue) });
-            output.Add(new Test { from = int.MaxValue - 30000000, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(int.MaxValue - 30000000, int.MaxValue) });
-            output.Add(new Test { from = 1, to = int.MaxValue, results = SuperfastSpecialPrimes.Primer.Solve(1, int.MaxValue) });
+            var shouldbe = SuperfastSpecialPrimes.Primer.Solve(int.MaxValue - 30000000, int.MaxValue);
+            for (int i=0; i < 1; i++)
+            {
+                output.Add(new Test { from = int.MaxValue - 30000000, to = int.MaxValue, results = shouldbe });
+            }
+            var shouldbe2 = SuperfastSpecialPrimes.Primer.Solve(1, int.MaxValue);
+            output.Add(new Test { from = 1, to = int.MaxValue, results = shouldbe2 });
             return output;
         }
     }

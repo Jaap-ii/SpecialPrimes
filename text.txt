@@ -1,2 +1,3 @@
 JaapHisSolver.Solve(test.from, test.to);
 SuperfastSpecialPrimes.Primer.Solve(test.from, test.to);
+HyperfastSpecialPrimes.Primer.Solve(test.from, test.to);
